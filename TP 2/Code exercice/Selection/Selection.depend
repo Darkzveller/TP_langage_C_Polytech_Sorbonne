@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1759494004 source:h:\mon drive\2025-2026_polytech_sorbonne\langage c\tp 2\selection\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<math.h>
+

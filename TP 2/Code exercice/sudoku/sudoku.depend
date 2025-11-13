@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1759505678 source:h:\mon drive\2025-2026_polytech_sorbonne\langage c\tp 2\sudoku\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<math.h>
+
