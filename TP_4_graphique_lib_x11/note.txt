@@ -1,0 +1,33 @@
+      
+ void casevois(int x, int y, int d, int *nx, int *ny)
+{
+ 
+   if (d == 0) {           /*nord*/
+        *nx = x;
+        *ny = y - 1;
+    } else if (d == 1) {     /*est*/
+        *nx = x + 1;
+        *ny = y;
+    } else if (d == 2) {    /*sud*/
+        *nx = x;
+        *ny = y + 1;
+    } else if (d == 3) {    /*ouest*/
+        *nx = x - 1;
+        *ny = y;
+    } else {          
+        *nx = x;
+        *ny = y;
+    }
+}   /*  on depasse les limites du tableaux */
+
+void phaseExpansion(int lab[TAILLE_X][TAILLE_Y], int xD, int yD, int xA, int yA) {
+    int r = 1;
+    lab[xD][yD] = r;
+}
+
+    /* Initialisation affichage */
+    if (!initAffichage()) {
+        fprintf(stderr, "Erreur lors de l'initialisation de l'affichage\n");
+        return 1;
+    }
+
