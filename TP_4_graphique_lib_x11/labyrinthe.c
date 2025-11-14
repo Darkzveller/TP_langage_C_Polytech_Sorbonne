@@ -25,13 +25,13 @@ int main(void) {
 
     printf("Caca test print\n");
 
-    /* Charger le labyrinthe depuis le fichier */
+    //pré-charger le labyrinthe depuis le fichier
     if (!build_labyrinthe("laby2.txt", tab_representative_labyrinthe)) {
         printf("Error chargement fichier\n");
         return 1;
     }
 
-    /* Initialisation affichage */
+    //Initialisation affichage 
     if (!initAffichage()) {
         printf("Error initialisation de l'affichage\n");
         return 1;
@@ -97,8 +97,9 @@ int main(void) {
 
     } else 
     {
-    *coord_x_voisine = coord_x_actu;
-    *coord_y_voisine = coord_y_actu;
+        // Au cas ou, mauvaise détection
+        *coord_x_voisine = coord_x_actu;
+        *coord_y_voisine = coord_y_actu;
     }
 }  
 /*
