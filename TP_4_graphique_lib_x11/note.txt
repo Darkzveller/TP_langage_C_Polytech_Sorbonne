@@ -31,3 +31,23 @@ void phaseExpansion(int lab[TAILLE_X][TAILLE_Y], int xD, int yD, int xA, int yA)
         return 1;
     }
 
+/*
+  Question 5 :
+
+  Si on cherche à utiliser la fonction `coord_case_voisine` pour une case
+  située sur le bord du tableau (coordonnées x=0, x=TAILLE_X-1, y=0, y=TAILLE_Y-1), 
+  certaines directions pointeraient **hors du tableau** :
+
+    - Nord d'une case y=0 → ny = -1 (hors limites)
+    - Sud d'une case y=TAILLE_Y-1 → ny = TAILLE_Y (hors limites)
+    - Ouest d'une case x=0 → nx = -1 (hors limites)
+    - Est d'une case x=TAILLE_X-1 → nx = TAILLE_X (hors limites)
+
+  Cela provoquerait **un accès mémoire invalide** si on essayait de lire/écrire
+  dans le tableau avec ces coordonnées.
+
+  Pour se prémunir de ce problème sans complexifier l'algorithme,
+  on considère que toutes les cases de la périphérie du labyrinthe sont bloquées,
+  et donc on n'appellera pas la fonction coord_case_voisine depuis une case
+  située sur la bordure.
+*/

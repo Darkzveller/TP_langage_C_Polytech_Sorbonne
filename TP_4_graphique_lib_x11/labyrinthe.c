@@ -12,9 +12,9 @@ int coord_x_depart;
 int coord_y_depart;
 int coord_x_arrivee;
 int coord_y_arrivee;
-int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y];
 
 int main(void) {
+int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y];
 
     /* Charger le labyrinthe depuis le fichier */
     if (!build_labyrinthe("laby1.txt", tab_representative_labyrinthe)) {
@@ -32,7 +32,12 @@ int main(void) {
     int couple_cordonne_depart[2] = {coord_x_depart, coord_y_depart};
     int couple_cordonne_arrivee[2] = {coord_x_arrivee, coord_y_arrivee};
 
-    //Affiche labyrinthe
+    // //Affiche labyrinthe
+    // afficheLabyrinthe(tab_representative_labyrinthe, couple_cordonne_depart, couple_cordonne_arrivee, 0);
+    // Phase d'expansion
+    phaseExpansion(tab_representative_labyrinthe, coord_x_depart, coord_y_depart,coord_x_arrivee, coord_y_arrivee);
+
+    // Afficher le labyrinthe 
     afficheLabyrinthe(tab_representative_labyrinthe, couple_cordonne_depart, couple_cordonne_arrivee, 0);
 
     return 0;
@@ -42,28 +47,79 @@ int main(void) {
 // d = 0 : Nord, 1 : Est, 2 : Sud, 3 : Ouest
  void coord_case_voisine(int coord_x_actu, int coord_y_actu, int direction_voulue, int *coord_x_voisine, int *coord_y_voisine)
 {
-    if (direction_voulue == 0) {  
+    if (direction_voulue == 0) 
+    {  
         // Nort
         *coord_x_voisine = coord_x_actu;
         *coord_y_voisine = coord_y_actu - 1;
 
-    } else if (direction_voulue == 1) {     
+    } else if (direction_voulue == 1) 
+    {     
         // Est
         *coord_x_voisine = coord_x_actu + 1;
         *coord_y_voisine = coord_y_actu;
 
-    } else if (direction_voulue == 2) {    
+    } else if (direction_voulue == 2) 
+    {    
         // Sud       
         *coord_x_voisine = coord_x_actu;
         *coord_y_voisine = coord_y_actu + 1;
 
-    } else if (direction_voulue == 3) {    
+    } else if (direction_voulue == 3) 
+    {    
         // Ouest
         *coord_x_voisine= coord_x_actu - 1;
         *coord_y_voisine= coord_y_actu;
 
-    }else {
+    } else 
+    {
     *coord_x_voisine = coord_x_actu;
     *coord_y_voisine = coord_y_actu;
-}
+    }
 }  
+/*
+  Question 5 :
+
+  Si on cherche à utiliser la fonction `coord_case_voisine` pour une case
+  située sur le bord du tableau (coordonnées x=0, x=TAILLE_X-1, y=0, y=TAILLE_Y-1), 
+  certaines directions pointeraient **hors du tableau** :
+
+  Cela provoquerait un accès mémoire invalide si on essayait de lire/écrire
+  dans le tableau avec ces coordonnées.
+
+  Pour se prémunir de ce problème, on considère que toutes les cases de la périphérie du labyrinthe sont bloquées,
+  et donc on n'appellera pas la fonction coord_case_voisine depuis une case
+  située sur la bordure.
+*/
+void phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee)
+{
+    int distance_parouru = 1; // distance initiale correspondant au r présent dans la question 6
+    int changements = 1; // pour savoir si de nouvelles cases ont été marquées
+
+    tab_representative_labyrinthe[coord_x_depart][coord_y_depart] = distance_parouru; // on marque la case de départ
+
+    while (tab_representative_labyrinthe[coord_x_arrivee][coord_y_arrivee] == 0 && changements) { // tant que l'arrivée n'est pas atteinte
+        changements = 0;
+
+        // on parcourt toutes les cases
+        for (int y = 1; y < TAILLE_Y - 1; y++) {      // on ignore les bordures
+            for (int x = 1; x < TAILLE_X - 1; x++) {
+
+                if (tab_representative_labyrinthe[x][y] == distance_parouru) { // case marquée r
+                    // vérifier les 4 voisins
+                    for (int d = 0; d < 4; d++) {
+                        int nx, ny;
+                        coord_case_voisine(x, y, d, &nx, &ny);
+
+                        if (tab_representative_labyrinthe[nx][ny] == 0) { // case libre non visitée
+                            tab_representative_labyrinthe[nx][ny] = distance_parouru + 1;
+                            changements = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        distance_parouru++; // incrémenter la distance
+    }
+}
