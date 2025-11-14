@@ -51,3 +51,41 @@ void phaseExpansion(int lab[TAILLE_X][TAILLE_Y], int xD, int yD, int xA, int yA)
   et donc on n'appellera pas la fonction coord_case_voisine depuis une case
   située sur la bordure.
 */
+
+
+
+
+/*
+void phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee)
+{
+    int distance_parouru = 1; // distance initiale correspondant au r présent dans la question 6
+    int changements = 1; // pour savoir si de nouvelles cases ont été marquées
+
+    tab_representative_labyrinthe[coord_x_depart][coord_y_depart] = distance_parouru; // on marque la case de départ
+
+    while (tab_representative_labyrinthe[coord_x_arrivee][coord_y_arrivee] == 0 && changements) { // tant que l'arrivée n'est pas atteinte
+        changements = 0;
+
+        // on parcourt toutes les cases
+        for (int y = 1; y < TAILLE_Y - 1; y++) {      // on ignore les bordures
+            for (int x = 1; x < TAILLE_X - 1; x++) {
+
+                if (tab_representative_labyrinthe[x][y] == distance_parouru) { // case marquée r
+                    // vérifier les 4 voisins
+                    for (int d = 0; d < 4; d++) {
+                        int nx, ny;
+                        coord_case_voisine(x, y, d, &nx, &ny);
+
+                        if (tab_representative_labyrinthe[nx][ny] == 0) { // case libre non visitée
+                            tab_representative_labyrinthe[nx][ny] = distance_parouru + 1;
+                            changements = 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        distance_parouru++; // incrémenter la distance
+    }
+}
+*/

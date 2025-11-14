@@ -1,6 +1,7 @@
 #include "affichage.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>  
 #include "lecture.h"
 // Commande gcc : 
 // rm launch.out affichage.o labyrinthe.o lecture.o 
@@ -13,11 +14,15 @@ int coord_y_depart;
 int coord_x_arrivee;
 int coord_y_arrivee;
 
+int phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee);
 int main(void) {
-int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y];
+
+    int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y];
+
+    printf("Caca test print\n");
 
     /* Charger le labyrinthe depuis le fichier */
-    if (!build_labyrinthe("laby1.txt", tab_representative_labyrinthe)) {
+    if (!build_labyrinthe("laby3.txt", tab_representative_labyrinthe)) {
         printf("Error chargement fichier\n");
         return 1;
     }
@@ -32,12 +37,16 @@ int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y];
     int couple_cordonne_depart[2] = {coord_x_depart, coord_y_depart};
     int couple_cordonne_arrivee[2] = {coord_x_arrivee, coord_y_arrivee};
 
-    // //Affiche labyrinthe
-    // afficheLabyrinthe(tab_representative_labyrinthe, couple_cordonne_depart, couple_cordonne_arrivee, 0);
     // Phase d'expansion
-    phaseExpansion(tab_representative_labyrinthe, coord_x_depart, coord_y_depart,coord_x_arrivee, coord_y_arrivee);
+    bool chemin_existe = phaseExpansion(tab_representative_labyrinthe, coord_x_depart, coord_y_depart, coord_x_arrivee, coord_y_arrivee);
 
-    // Afficher le labyrinthe 
+    if (chemin_existe) {
+        printf("Chemin trouvé !\n");
+    } else {
+        printf("Pas de chemin possible entre départ et arrivée.\n");
+    }
+
+    // Afficher le labyrinthe (inchangé)
     afficheLabyrinthe(tab_representative_labyrinthe, couple_cordonne_depart, couple_cordonne_arrivee, 0);
 
     return 0;
@@ -91,35 +100,41 @@ int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y];
   et donc on n'appellera pas la fonction coord_case_voisine depuis une case
   située sur la bordure.
 */
-void phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee)
+
+
+// Renvoie true ssi un chemin existe, false sinon
+int phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee)
 {
-    int distance_parouru = 1; // distance initiale correspondant au r présent dans la question 6
-    int changements = 1; // pour savoir si de nouvelles cases ont été marquées
+    int distance_parcourue = 1; // distance initiale
+    int nouvelles_cases_marquees = 1;
 
-    tab_representative_labyrinthe[coord_x_depart][coord_y_depart] = distance_parouru; // on marque la case de départ
+    tab_representative_labyrinthe[coord_x_depart][coord_y_depart] = distance_parcourue;
 
-    while (tab_representative_labyrinthe[coord_x_arrivee][coord_y_arrivee] == 0 && changements) { // tant que l'arrivée n'est pas atteinte
-        changements = 0;
+    while (tab_representative_labyrinthe[coord_x_arrivee][coord_y_arrivee] == 0 && nouvelles_cases_marquees) {
+        nouvelles_cases_marquees = 0;
 
-        // on parcourt toutes les cases
-        for (int y = 1; y < TAILLE_Y - 1; y++) {      // on ignore les bordures
+        // Parcours de toutes les cases (ignore les bordures)
+        for (int y = 1; y < TAILLE_Y - 1; y++) {
             for (int x = 1; x < TAILLE_X - 1; x++) {
 
-                if (tab_representative_labyrinthe[x][y] == distance_parouru) { // case marquée r
-                    // vérifier les 4 voisins
+                if (tab_representative_labyrinthe[x][y] == distance_parcourue) {
+                    // Vérifie les 4 voisins
                     for (int d = 0; d < 4; d++) {
                         int nx, ny;
                         coord_case_voisine(x, y, d, &nx, &ny);
 
                         if (tab_representative_labyrinthe[nx][ny] == 0) { // case libre non visitée
-                            tab_representative_labyrinthe[nx][ny] = distance_parouru + 1;
-                            changements = 1;
+                            tab_representative_labyrinthe[nx][ny] = distance_parcourue + 1;
+                            nouvelles_cases_marquees = 1;
                         }
                     }
                 }
             }
         }
 
-        distance_parouru++; // incrémenter la distance
+        distance_parcourue++;
     }
+
+    // Renvoie true si l'arrivée a été atteinte, false sinon
+    return tab_representative_labyrinthe[coord_x_arrivee][coord_y_arrivee] > 0;
 }
