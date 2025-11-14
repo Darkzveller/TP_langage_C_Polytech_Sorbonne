@@ -14,7 +14,11 @@ int coord_y_depart;
 int coord_x_arrivee;
 int coord_y_arrivee;
 
+void coord_case_voisine(int coord_x_actu, int coord_y_actu, int direction_voulue, int *coord_x_voisine, int *coord_y_voisine);
 int phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee);
+int phaseRemontee(int lab[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee);
+
+
 int main(void) {
 
     int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y];
@@ -22,7 +26,7 @@ int main(void) {
     printf("Caca test print\n");
 
     /* Charger le labyrinthe depuis le fichier */
-    if (!build_labyrinthe("laby3.txt", tab_representative_labyrinthe)) {
+    if (!build_labyrinthe("laby2.txt", tab_representative_labyrinthe)) {
         printf("Error chargement fichier\n");
         return 1;
     }
@@ -41,13 +45,22 @@ int main(void) {
     bool chemin_existe = phaseExpansion(tab_representative_labyrinthe, coord_x_depart, coord_y_depart, coord_x_arrivee, coord_y_arrivee);
 
     if (chemin_existe) {
-        printf("Chemin trouvé !\n");
+        printf("Chemin trouvé !!! B)\n");
     } else {
-        printf("Pas de chemin possible entre départ et arrivée.\n");
+        printf("Pas de chemin possible entre départ et arrivée\n");
     }
 
-    // Afficher le labyrinthe (inchangé)
-    afficheLabyrinthe(tab_representative_labyrinthe, couple_cordonne_depart, couple_cordonne_arrivee, 0);
+    // Phase de remontée
+    bool remontée_ok = phaseRemontee(tab_representative_labyrinthe, coord_x_depart, coord_y_depart, coord_x_arrivee, coord_y_arrivee);
+    if (!remontée_ok) {
+        printf("Erreur lors de la remontée du chemin\n");
+    } else {
+        printf("Chemin correctement tracé dans le labyrinthe\n");
+    }
+
+
+    // Afficher le labyrinthe (avec le chemin marqué)
+    afficheLabyrinthe(tab_representative_labyrinthe, (int[2]){coord_x_depart, coord_y_depart},(int[2]){coord_x_arrivee, coord_y_arrivee}, 0);
 
     return 0;
 }
@@ -137,4 +150,50 @@ int phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int co
 
     // Renvoie true si l'arrivée a été atteinte, false sinon
     return tab_representative_labyrinthe[coord_x_arrivee][coord_y_arrivee] > 0;
+}
+
+// Renvoie true si le chemin a été correctement remonté, false sinon
+int phaseRemontee(int lab[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee) 
+{
+    int x_courant = coord_x_arrivee;
+    int y_courant = coord_y_arrivee;
+    int distance_actuelle = lab[x_courant][y_courant];
+
+    if (distance_actuelle <= 0) {
+        // L'arrivée n'a pas été atteinte pendant l'expansion
+        return false;
+    }
+
+    // Marque la case d'arrivée comme faisant partie du chemin
+    lab[x_courant][y_courant] = -2;
+
+    while (!(x_courant == coord_x_depart && y_courant == coord_y_depart)) {
+        bool voisin_trouve = false;
+
+        // Vérifie les 4 voisins
+        for (int d = 0; d < 4; d++) {
+            int nx, ny;
+            coord_case_voisine(x_courant, y_courant, d, &nx, &ny);
+
+            // Si voisin a la distance précédente
+            if (lab[nx][ny] == distance_actuelle - 1) {
+                // Marque le voisin comme faisant partie du chemin
+                lab[nx][ny] = -2;
+
+                // Déplace la case courante
+                x_courant = nx;
+                y_courant = ny;
+                distance_actuelle--;
+                voisin_trouve = true;
+                break;
+            }
+        }
+
+        if (!voisin_trouve) {
+            // Si aucun voisin à distance r-1 n'a été trouvé, la remontée échoue
+            return false;
+        }
+    }
+
+    return true;
 }
