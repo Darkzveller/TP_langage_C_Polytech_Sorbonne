@@ -17,7 +17,7 @@ int coord_y_arrivee;
 void coord_case_voisine(int coord_x_actu, int coord_y_actu, int direction_voulue, int *coord_x_voisine, int *coord_y_voisine);
 int phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee);
 int phaseRemontee(int lab[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee);
-
+void nettoyerLabyrinthe(int lab[TAILLE_X][TAILLE_Y]);
 
 int main(void) {
 
@@ -58,6 +58,8 @@ int main(void) {
         printf("Chemin correctement tracé dans le labyrinthe\n");
     }
 
+    // Nettoie le labyrinthe
+    nettoyerLabyrinthe(tab_representative_labyrinthe);
 
     // Afficher le labyrinthe (avec le chemin marqué)
     afficheLabyrinthe(tab_representative_labyrinthe, (int[2]){coord_x_depart, coord_y_depart},(int[2]){coord_x_arrivee, coord_y_arrivee}, 0);
@@ -113,7 +115,6 @@ int main(void) {
   et donc on n'appellera pas la fonction coord_case_voisine depuis une case
   située sur la bordure.
 */
-
 
 // Renvoie true ssi un chemin existe, false sinon
 int phaseExpansion(int tab_representative_labyrinthe[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_depart, int coord_x_arrivee, int coord_y_arrivee)
@@ -196,4 +197,16 @@ int phaseRemontee(int lab[TAILLE_X][TAILLE_Y], int coord_x_depart, int coord_y_d
     }
 
     return true;
+}
+
+// Nettoie le labyrinthe : toutes les cases non bloquées (-1) et qui ne font pas partie du chemin (-2) sont remises à 0
+void nettoyerLabyrinthe(int lab[TAILLE_X][TAILLE_Y]) {
+    for (int y = 0; y < TAILLE_Y; y++) {
+        for (int x = 0; x < TAILLE_X; x++) {
+            if (lab[x][y] > 0) {
+                // Case visitée pendant l'expansion mais pas sur le chemin final
+                lab[x][y] = 0;
+            }
+        }
+    }
 }
