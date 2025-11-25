@@ -16,7 +16,6 @@ make mproper && make clean && make run
 #define ESPACEMENT_X_ALIEN 60 // espacement horizontal entre aliens
 #define ESPACEMENT_Y_ALIEN 60 // espacement vertical entre rangées
 
-
 int L = 400; // largeur fenêtre
 int H = 600; // hauteur fenêtre
 
@@ -30,11 +29,8 @@ int main()
 
     t_alien aliens[NB_LIGNE * NB_COLONNE];
 
-    int largeur_sprite = 4 * SPRITE_X; // Calcul la taille de notre sprite
-    int hauteur_sprite = 4 * SPRITE_Y; // Calcul la taille de notre sprite
-
-    int x = (L - largeur_sprite) / 2; // centrage horizontal
-    int y = H - hauteur_sprite - 10;  // position basse avec marge
+    vaisseau.x = (L - 4 * SPRITE_X) / 2;
+    vaisseau.y = H - 4 * SPRITE_Y - 10;
 
     initAlien(aliens, NB_LIGNE, NB_COLONNE, ESPACEMENT_X_ALIEN, ESPACEMENT_Y_ALIEN);
 
@@ -51,11 +47,17 @@ int main()
         }
 
         // Déplacement du joueur
-        deplacement_sprite(touche, &x, &y, &largeur_sprite, &L);
+        deplaceVaisseau(&vaisseau, touche, L);
 
         // Rafraîchissement
-        touche = miseAJourAffichage(50);// temporisation en µs
-        affichage_touche_appuyer(touche);
+        touche = miseAJourAffichage(50); // temporisation en µs
+                                         // affichage_touche_appuyer(touche);
+        int touche_allien = testMissile(&vaisseau, &aliens, NB_COLONNE * NB_LIGNE);
+        if (touche_allien>0)
+        {
+            printf("Numéro alien touché : %d", touche_allien);
+            printf("\n");
+        }
     }
 
     return 0;
