@@ -4,7 +4,7 @@
 #include "alien.h"
 #include <stdio.h>
 #include <stdbool.h>
-
+// Définition enumeration pour comprendre quel est la touche actionner
 typedef enum
 {
     TOUCHE_AUCUNE = 0,
@@ -14,6 +14,7 @@ typedef enum
     TOUCHE_ESC = -1
 } Touche;
 
+// Définition de la structure du vaisseau et du missile
 typedef struct
 {
     int x;           // position horizontale

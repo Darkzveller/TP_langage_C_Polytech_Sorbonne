@@ -23,6 +23,7 @@ typedef struct
 void deplaceAlien(t_alien *a);
 // Initialise les aliens en une position
 void initAlien(t_alien *aliens, int nb_ligne, int nb_colonne, int espace_x, int espace_y);
+// FOnction qui permet d'afficher les aliens
 void afficheAlien(t_alien *a);
 
 #endif

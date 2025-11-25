@@ -51,9 +51,8 @@ int main()
 
         // Rafraîchissement
         touche = miseAJourAffichage(50); // temporisation en µs
-                                         // affichage_touche_appuyer(touche);
         int touche_allien = testMissile(&vaisseau, &aliens, NB_COLONNE * NB_LIGNE);
-        if (touche_allien>0)
+        if (touche_allien > 0)
         {
             printf("Numéro alien touché : %d", touche_allien);
             printf("\n");

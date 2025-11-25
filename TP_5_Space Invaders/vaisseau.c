@@ -1,6 +1,6 @@
 #include "vaisseau.h"
 
-// Définition du sprite du vaisseau
+// Définition du sprite du vaisseau et du missile
 t_vaisseau vaisseau = {
     .x = 0,
     .y = 0,
@@ -18,25 +18,33 @@ t_vaisseau vaisseau = {
     .missileActif = false};
 
 t_sprite missile_sprite = {
-    {1},  // ligne 0 : pixel actif
-    {1},  // ligne 1 : pixel actif
-    {1},  // ligne 2 : pixel actif
-    {1}   // ligne 3 : pixel actif
+    {1}, // ligne 0 : pixel actif
+    {1}, // ligne 1 : pixel actif
+    {1}, // ligne 2 : pixel actif
+    {1}  // ligne 3 : pixel actif
 };
-
+// Fonction permettant de faire mouvoir  le vaisseau sur l'axe horizental
 void deplaceVaisseau(t_vaisseau *v, int touche, int largeur_fenetre)
 {
     // Déplacement horizontal
     if (touche == TOUCHE_GAUCHE)
+    {
         v->x -= 5;
+    }
     else if (touche == TOUCHE_DROITE)
+    {
         v->x += 5;
+    }
 
     // Limites de la fenêtre
     if (v->x < 0)
+    {
         v->x = 0;
+    }
     if (v->x > largeur_fenetre - SPRITE_X)
+    {
         v->x = largeur_fenetre - SPRITE_X;
+    }
 
     // Tir
     if (touche == TOUCHE_ESPACE && !v->missileActif)
@@ -51,7 +59,9 @@ void deplaceVaisseau(t_vaisseau *v, int touche, int largeur_fenetre)
     {
         v->missile_y -= 10;   // vitesse du missile
         if (v->missile_y < 0) // sort de l'écran
+        {
             v->missileActif = false;
+        }
     }
 
     // Affichage
@@ -72,51 +82,25 @@ void afficheMissile(t_vaisseau *v)
     }
 }
 
-// int testMissile(t_vaisseau *v, t_alien *aliens, int nbAliens)
-// {
-//     if (!v->missileActif)
-//     {
-//         return -1; // pas de missile en vol
-//     }
-//     // Parcours les n aliens présent dans le jeux
-//     for (int i = 0; i < nbAliens; i++)
-//     {
-//         t_alien *a = &aliens[i];
-
-//         // Vérifie si l'alien est encore actif
-//         if (!a->sprite_actif)
-//             continue;
-
-//         // Vérifie collision simple rectangle (rectangle de taille de l'alien)
-//         if (v->missile_x >= a->x && v->missile_x < a->x + SPRITE_X * 4 &&
-//             v->missile_y >= a->y && v->missile_y < a->y + SPRITE_Y * 4)
-//         {
-
-//             v->missileActif = false; // le missile disparait
-//             return i;                // renvoie l'indice de l'alien touché
-//         }
-//     }
-
-//     return -1; // aucun alien touché
-// }
-
 int testMissile(t_vaisseau *v, t_alien aliens[], int nbAliens)
 {
     if (!v->missileActif)
-        return -1;
-
+        return -1; // pas de missile en vol
+    // Parcours les n aliens présent dans le jeux
     for (int i = 0; i < nbAliens; i++)
     {
         t_alien *a = &aliens[i];
-        if (!a->vivant) continue;
-
+        // Vérifie si l'alien est encore actif
+        if (!a->vivant)
+            continue;
+        // Vérifie collision simple rectangle (rectangle de taille de l'alien)
         if (v->missile_x >= a->x && v->missile_x < a->x + SPRITE_X * 4 &&
             v->missile_y >= a->y && v->missile_y < a->y + SPRITE_Y * 4)
         {
-            v->missileActif = false;
-            a->vivant = false;
-            a->eclair = 5; // durée de l’éclair en frames
-            return i;
+            v->missileActif = false; // le missile disparait
+            a->vivant = false;       // l'alien est mort
+            a->eclair = 5;           // durée de l’éclair en frames
+            return i;                // renvoie l'indice de l'alien touché
         }
     }
     return -1;
