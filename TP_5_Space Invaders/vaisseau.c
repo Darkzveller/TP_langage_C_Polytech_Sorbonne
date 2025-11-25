@@ -18,7 +18,10 @@ t_vaisseau vaisseau = {
     .missileActif = false};
 
 t_sprite missile_sprite = {
-    {1}, // 1 pixel de large
+    {1},  // ligne 0 : pixel actif
+    {1},  // ligne 1 : pixel actif
+    {1},  // ligne 2 : pixel actif
+    {1}   // ligne 3 : pixel actif
 };
 
 void deplaceVaisseau(t_vaisseau *v, int touche, int largeur_fenetre)
@@ -69,33 +72,56 @@ void afficheMissile(t_vaisseau *v)
     }
 }
 
-int testMissile(t_vaisseau *v, t_alien *aliens, int nbAliens)
+// int testMissile(t_vaisseau *v, t_alien *aliens, int nbAliens)
+// {
+//     if (!v->missileActif)
+//     {
+//         return -1; // pas de missile en vol
+//     }
+//     // Parcours les n aliens présent dans le jeux
+//     for (int i = 0; i < nbAliens; i++)
+//     {
+//         t_alien *a = &aliens[i];
+
+//         // Vérifie si l'alien est encore actif
+//         if (!a->sprite_actif)
+//             continue;
+
+//         // Vérifie collision simple rectangle (rectangle de taille de l'alien)
+//         if (v->missile_x >= a->x && v->missile_x < a->x + SPRITE_X * 4 &&
+//             v->missile_y >= a->y && v->missile_y < a->y + SPRITE_Y * 4)
+//         {
+
+//             v->missileActif = false; // le missile disparait
+//             return i;                // renvoie l'indice de l'alien touché
+//         }
+//     }
+
+//     return -1; // aucun alien touché
+// }
+
+int testMissile(t_vaisseau *v, t_alien aliens[], int nbAliens)
 {
     if (!v->missileActif)
-    {
-        return -1; // pas de missile en vol
-    }
-    // Parcours les n aliens présent dans le jeux
+        return -1;
+
     for (int i = 0; i < nbAliens; i++)
     {
         t_alien *a = &aliens[i];
+        if (!a->vivant) continue;
 
-        // Vérifie si l'alien est encore actif
-        if (!a->sprite_actif)
-            continue;
-
-        // Vérifie collision simple rectangle (rectangle de taille de l'alien)
         if (v->missile_x >= a->x && v->missile_x < a->x + SPRITE_X * 4 &&
             v->missile_y >= a->y && v->missile_y < a->y + SPRITE_Y * 4)
         {
-
-            v->missileActif = false; // le missile disparait
-            return i;                // renvoie l'indice de l'alien touché
+            v->missileActif = false;
+            a->vivant = false;
+            a->eclair = 5; // durée de l’éclair en frames
+            return i;
         }
     }
-
-    return -1; // aucun alien touché
+    return -1;
 }
+
 // Permet d'afficher la touche sur laquelle on appuie, tout en gardant le code plus lisible
 void affichage_touche_appuyer(int touche)
 {
