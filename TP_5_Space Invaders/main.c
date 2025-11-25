@@ -4,40 +4,18 @@
 #include <stdbool.h>
 #include "affichage.h"
 #include "alien.h"
+#include "vaisseau.h"
 /*
 
 make mproper && make clean && make run
 
 */
-// Définition du sprite du vaisseau (11x8)
-t_sprite vaisseau = {
-    {0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0},
-    {0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0},
-    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-    {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-    {0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
-    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-    {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0}
-};
 
 #define NB_COLONNE 5
 #define NB_LIGNE 3
 #define ESPACEMENT_X_ALIEN 60 // espacement horizontal entre aliens
 #define ESPACEMENT_Y_ALIEN 60 // espacement vertical entre rangées
 
-// Définition des touches pour la fonction affichage_touche_appuyer
-typedef enum {
-    TOUCHE_AUCUNE = 0,
-    TOUCHE_GAUCHE = 1,
-    TOUCHE_DROITE = 2,
-    TOUCHE_ESPACE = 3,
-    TOUCHE_ESC = -1
-} Touche;
-// Permet de calculer le déplacement du sprite de l'utilisateur, tout en gardant le code plus lisible
-void deplacement_sprite(int touche, int *x, int *y, int *largeur_sprite, int *largeur_fenetre);
-// Permet d'afficher la touche sur laquelle on appuie, tout en gardant le code plus lisible
-void affichage_touche_appuyer(int touche);
 
 int L = 400; // largeur fenêtre
 int H = 600; // hauteur fenêtre
@@ -74,7 +52,6 @@ int main()
 
         // Déplacement du joueur
         deplacement_sprite(touche, &x, &y, &largeur_sprite, &L);
-        afficheSprite(vaisseau, x, y, ROUGE);
 
         // Rafraîchissement
         touche = miseAJourAffichage(50);// temporisation en µs
@@ -82,59 +59,4 @@ int main()
     }
 
     return 0;
-}
-
-// Permet de calculer le déplacement du sprite de l'utilisateur, tout en gardant le code plus lisible
-void deplacement_sprite(int touche, int *x, int *y, int *largeur_sprite, int *largeur_fenetre)
-{
-    if (touche == TOUCHE_GAUCHE)
-    {
-        *x -= 5;
-    }
-    if (touche == TOUCHE_DROITE)
-    {
-        *x += 5;
-    }
-    if (touche == TOUCHE_ESPACE)
-    {
-    }
-    if (*x < 0)
-    {
-        *x = 0;
-    }
-    if (*x > *largeur_fenetre - *largeur_sprite)
-    {
-        *x = *largeur_fenetre - *largeur_sprite;
-    }
-}
-// Permet d'afficher la touche sur laquelle on appuie, tout en gardant le code plus lisible
-void affichage_touche_appuyer(int touche)
-{
-    switch (touche)
-    {
-
-    case TOUCHE_GAUCHE:
-
-        printf("Gauche\n");
-        break;
-
-    case TOUCHE_DROITE:
-
-        printf("Droite\n");
-        break;
-    case TOUCHE_ESPACE:
-
-        printf("Espace\n");
-        break;
-
-    case TOUCHE_ESC:
-
-        printf("ESC\n");
-        break;
-
-    default:
-
-        printf("Aucune\n");
-        break;
-    }
 }
