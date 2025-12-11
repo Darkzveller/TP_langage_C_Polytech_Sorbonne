@@ -49,32 +49,6 @@ int main()
     // int capacite_individus = 0; // Capacité actuelle du tableau
     // int nb_lus = 0;             // Nombre d'individus lus
 
-    // // Lecture des individus
-    // while (!feof(file))
-    // {
-    //     // Si on atteint la capacité, on étend le tableau
-    //     if (nb_lus >= capacite_individus)
-    //     {
-    //         // if (capacite_individus == 0)
-    //         // {
-    //         //     capacite_individus = 1; // première allocation
-    //         // }
-    //         // else
-    //         // {
-    //             capacite_individus += 1; // doublement
-    //         // }
-    //         t_indiv *tmp = realloc(individus, capacite_individus * sizeof(t_indiv));
-    //         if (tmp == NULL)
-    //         {
-    //             printf("Erreur d'allocation mémoire\n");
-    //             exit(EXIT_FAILURE);
-    //         }
-    //         individus = tmp;
-    //     }
-    //     lecture_adn(file, &individus[nb_lus]);
-    //     nb_lus++;
-    // }
-
     // Calcul et affichage des similarités
     printf("\n--- Similarités avec le fragment suspect ---\n");
     for (int i = 0; i < nb_lus; i++)
