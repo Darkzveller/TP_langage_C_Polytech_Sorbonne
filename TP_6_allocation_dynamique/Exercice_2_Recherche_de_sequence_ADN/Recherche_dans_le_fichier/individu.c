@@ -95,14 +95,27 @@ void calculeSimilarite(t_indiv *ind, char *sequence_fragment)
     int score = algorithme_needlman_wunsch(ind->sequence_ADN, sequence_fragment);
 
     // On récupère la longueur de la séquence la plus courte
+    // int len_plus_courte;
+    // if (strlen(ind->sequence_ADN) < len_plus_courte)
+    // {
+    //     len_plus_courte = strlen(ind->sequence_ADN);
+    // }
+    // else
+    // {
+    //     len_plus_courte = strlen(sequence_fragment);
+    // }
+
+    int len_seq1 = strlen(ind->sequence_ADN);
+    int len_seq2 = strlen(sequence_fragment);
+
     int len_plus_courte;
-    if (strlen(ind->sequence_ADN) < len_plus_courte)
+    if (len_seq1 < len_seq2)
     {
-        len_plus_courte = strlen(ind->sequence_ADN);
+        len_plus_courte = len_seq1;
     }
     else
     {
-        len_plus_courte = strlen(sequence_fragment);
+        len_plus_courte = len_seq2;
     }
 
     // Calcul du pourcentage d'inclusion
