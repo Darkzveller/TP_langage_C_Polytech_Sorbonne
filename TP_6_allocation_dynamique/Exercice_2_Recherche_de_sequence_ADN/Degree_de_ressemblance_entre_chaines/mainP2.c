@@ -5,11 +5,26 @@
 
 int main()
 {
-    // Chaînes préenregistrées
-    char seq1[] = "abcdefgh";
-    char seq2[] = "cdefg";
+    // Chaînes préenregistrées pour les tests
+    // Test 1
+    // char seq1[] = "abcdefgh";
+    // char seq2[] = "cdefg";
+    // Test 2
     // char seq1[] = "abcdefgh";
     // char seq2[] = "cdexfg";
+
+    char seq_tmp[10000];
+    printf("Entrez la première séquence d'ADN : ");
+    scanf("%s", &seq_tmp);                                               
+    char *seq1 = (char *)malloc(strlen(seq_tmp) + 1);
+    // Copier la saisie dans la mémoire allouée
+    strcpy(seq1, seq_tmp);
+
+    printf("Entrez la deuxième séquence d'ADN : ");
+    scanf("%s", &seq_tmp);                                               
+    char *seq2 = (char *)malloc(strlen(seq_tmp) + 1);
+    // Copier la saisie dans la mémoire allouée
+    strcpy(seq2, seq_tmp);
 
     // Calcul du score avec Needleman-Wunsch
     int score = algorithme_needlman_wunsch(seq1, seq2);
@@ -35,7 +50,7 @@ int main()
     printf("Séquence 1 : %s\n", seq1);
     printf("Séquence 2 : %s\n", seq2);
     printf("Score d'alignement : %d\n", score);
-    printf("Pourcentage d'inclusion : %.1f \n", pourcentage);
+    printf("Pourcentage d'inclusion : %.2f \n", pourcentage);
 
     return 0;
 }
