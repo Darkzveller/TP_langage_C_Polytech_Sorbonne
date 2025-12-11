@@ -1,5 +1,5 @@
 #include "individu.h"
-
+#include "score.h"
 int ouverture_fichier(const char *nom_fichier, FILE **file)
 {
     *file = fopen(nom_fichier, "r");
@@ -43,7 +43,7 @@ void lecture_adn(FILE *file, t_indiv *ind)
     strcat(ind->nom, " ");
     strcat(ind->nom, prenom_tmp);
 
-    ind->sequence_ADN = (char *)malloc(strlen(adn_temp)+1); // Allocation dynamique pour la séquence ADN + le caractère nul
+    ind->sequence_ADN = (char *)malloc(strlen(adn_temp) + 1); // Allocation dynamique pour la séquence ADN + le caractère nul
     if (ind->sequence_ADN == NULL)
     {
         printf("Erreur d'allocation mémoire pour le nom\n");
@@ -53,39 +53,61 @@ void lecture_adn(FILE *file, t_indiv *ind)
     strcpy(ind->sequence_ADN, adn_temp);
 }
 
-
 void detruire_indiv(t_indiv *ind)
 {
-    printf("\nTraitement de la destruction de t_indiv\n");
-    fflush(stdout);
+    // printf("\nTraitement de la destruction de t_indiv\n");
+    // fflush(stdout);
     if (ind->nom != NULL)
     {
-        printf("Libération du noms : %s\n", ind->nom);
-        printf(fflush(stdout));
+        // printf("Libération du noms : %s\n", ind->nom);
+        // fflush(stdout);
 
         free(ind->nom);
         ind->nom = NULL;
     }
-    else
-    {
-        printf("Nom déjà NULL\n");
-        fflush(stdout);
-    }
+    // else
+    // {
+    //     printf("Nom déjà NULL\n");
+    //     fflush(stdout);
+    // }
 
     if (ind->sequence_ADN != NULL)
     {
-        printf("Libération de la séquence ADN \n");
-        fflush(stdout);
+        // printf("Libération de la séquence ADN \n");
+        // fflush(stdout);
 
         free(ind->sequence_ADN);
         ind->sequence_ADN = NULL;
     }
+    // else
+    // {
+    //     printf("Séquence ADN déjà NULL\n");
+    //     fflush(stdout);
+    // }
+
+    // printf("t_indiv détruit avec succès.\n");
+    // fflush(stdout);
+}
+
+void calculeSimilarite(t_indiv *ind, char *sequence_fragment)
+{
+    // Calcul du score d'alignement global
+    int score = algorithme_needlman_wunsch(ind->sequence_ADN, sequence_fragment);
+
+    // On récupère la longueur de la séquence la plus courte
+    int len_plus_courte;
+    if (strlen(ind->sequence_ADN) < len_plus_courte)
+    {
+        len_plus_courte = strlen(ind->sequence_ADN);
+    }
     else
     {
-        printf("Séquence ADN déjà NULL\n");
-        fflush(stdout);
+        len_plus_courte = strlen(sequence_fragment);
     }
 
-    printf("t_indiv détruit avec succès.\n");
-    fflush(stdout);
+    // Calcul du pourcentage d'inclusion
+    float pourcentage = pourcentage_inclusion(score, len_plus_courte);
+
+    // Stocker dans l'individu
+    ind->similarite = pourcentage;
 }

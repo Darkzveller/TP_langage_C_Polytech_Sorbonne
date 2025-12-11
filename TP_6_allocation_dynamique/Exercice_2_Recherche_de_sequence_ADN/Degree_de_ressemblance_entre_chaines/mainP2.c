@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "malloc.h"
 #include "score.h" // ton fichier score.c compilé en score.o
 
 int main()
