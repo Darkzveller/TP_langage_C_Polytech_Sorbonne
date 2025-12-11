@@ -10,17 +10,49 @@ int ouverture_fichier(const char *nom_fichier, FILE **file)
     }
     return 1;
 }
+// Version 1 qui fonctionne très bien a condition qu'on alloue l'entiereté
+// void lecture_adn(FILE *file, t_indiv *ind)
+// {
+//     char prenom[TAILLE_NOM * 2]; // Pour stocker le prénom temporairement
+//     ind->nom = (char *)malloc(TAILLE_NOM);// Allocation dynamique pour le nom
+//     ind->sequence_ADN = (char *)malloc(TAILLE_SEQUENCE_ADN);// Allocation dynamique pour la séquence ADN
+
+//     /* On récupére les deux pairs de coordonnées de départ et arrivée */
+//     fscanf(file, "%s %s %s", ind->nom, prenom, ind->sequence_ADN);
+//     strcat(ind->nom, " ");
+//     strcat(ind->nom, prenom);
+// }
+
+// Version 2 qui fonctionne très bien en allouant juste la taille nécessaire
 void lecture_adn(FILE *file, t_indiv *ind)
 {
-    char prenom[TAILLE_NOM * 2]; // Pour stocker le prénom temporairement
-    ind->nom = (char *)malloc(TAILLE_NOM);// Allocation dynamique pour le nom
-    ind->sequence_ADN = (char *)malloc(TAILLE_SEQUENCE_ADN);// Allocation dynamique pour la séquence ADN
+    char nom_tmp[TAILLE_NOM];           // Buffer temporaire pour le prénom
+    char prenom_tmp[TAILLE_NOM];        // Buffer temporaire pour le prénom
+    char adn_temp[TAILLE_SEQUENCE_ADN]; // Buffer temporaire pour le nom
 
-    /* On récupére les deux pairs de coordonnées de départ et arrivée */
-    fscanf(file, "%s %s %s", ind->nom, prenom, ind->sequence_ADN);
+    fscanf(file, "%50s %50s %10000s", nom_tmp, prenom_tmp, adn_temp);
+    // Allouer la mémoire nécessaire pour le nom complet
+    ind->nom = (char *)malloc(strlen(nom_tmp) + strlen(prenom_tmp) + 2); // +2 pour l'espace et le caractère nul
+    if (ind->nom == NULL)
+    {
+        printf("Erreur d'allocation mémoire pour le nom\n");
+        exit(EXIT_FAILURE); // Gérer l'erreur d'allocation mémoire
+    }
+    // Construire le nom complet
+    strcpy(ind->nom, nom_tmp);
     strcat(ind->nom, " ");
-    strcat(ind->nom, prenom);
+    strcat(ind->nom, prenom_tmp);
+
+    ind->sequence_ADN = (char *)malloc(strlen(adn_temp)+1); // Allocation dynamique pour la séquence ADN + le caractère nul
+    if (ind->sequence_ADN == NULL)
+    {
+        printf("Erreur d'allocation mémoire pour le nom\n");
+        exit(EXIT_FAILURE); // Gérer l'erreur d'allocation mémoire
+    }
+    // Construire le nom complet
+    strcpy(ind->sequence_ADN, adn_temp);
 }
+
 
 void detruire_indiv(t_indiv *ind)
 {
