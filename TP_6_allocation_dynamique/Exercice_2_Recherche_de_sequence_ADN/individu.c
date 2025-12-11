@@ -1,35 +1,34 @@
 #include "individu.h"
 
-int lecture_adn(const char *nom_fichier, t_indiv *ind)
+int ouverture_fichier(const char *nom_fichier, FILE **file)
 {
-    char prenom[TAILLE_NOM * 2 + 1];
-    ind->nom = (char *)malloc(TAILLE_NOM);
-    ind->sequence_ADN = (char *)malloc(TAILLE_SEQUENCE_ADN);
-
-    FILE *file = fopen(nom_fichier, "r");
-
-    if (file == NULL)
+    *file = fopen(nom_fichier, "r");
+    if (*file == NULL)
     {
         printf("Impossible d'ouvrir le fichier %s\n", nom_fichier);
         return EXIT_FAILURE; // Renvoie un code erreur, comme quoi on a pas réussi a ouvrir le fichier
     }
+    return 1;
+}
+void lecture_adn(FILE *file, t_indiv *ind)
+{
+    char prenom[TAILLE_NOM * 2]; // Pour stocker le prénom temporairement
+    ind->nom = (char *)malloc(TAILLE_NOM);// Allocation dynamique pour le nom
+    ind->sequence_ADN = (char *)malloc(TAILLE_SEQUENCE_ADN);// Allocation dynamique pour la séquence ADN
 
     /* On récupére les deux pairs de coordonnées de départ et arrivée */
     fscanf(file, "%s %s %s", ind->nom, prenom, ind->sequence_ADN);
     strcat(ind->nom, " ");
     strcat(ind->nom, prenom);
-
-    fclose(file);
-    return 1;
 }
 
 void detruire_indiv(t_indiv *ind)
 {
-    printf("\n\n\n\nTraitement de la destruction de t_indiv\n");
+    printf("\nTraitement de la destruction de t_indiv\n");
     printf(fflush(stdout));
     if (ind->nom != NULL)
     {
-        printf("Libération du noms \n");
+        printf("Libération du noms : %s\n", ind->nom);
         printf(fflush(stdout));
 
         free(ind->nom);

@@ -14,6 +14,8 @@ typedef struct  {
     char* sequence_ADN;// Séquence ADN 
 }t_indiv;
 
+
+int ouverture_fichier(const char *nom_fichier, FILE **file);
 /*  
 Lit les données ADN d'un individu à partir d'un fichier
 Paramètres :
@@ -22,7 +24,7 @@ Paramètres :
 
 Retourne 1 en cas de succès, EXIT_FAILURE en cas d'erreur
 */
-int lecture_adn(const char *nom_fichier, t_indiv *ind);
+void lecture_adn(FILE *file, t_indiv *ind);
 /*
     * Libère la mémoire allouée pour un individu
 */
