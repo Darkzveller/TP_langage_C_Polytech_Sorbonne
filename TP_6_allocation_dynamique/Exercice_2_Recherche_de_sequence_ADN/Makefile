@@ -43,3 +43,7 @@ mproper:
 run: $(EXEC)             # La cible 'run' dépend de l'exécutable
 	./$(EXEC)             
 # Exécute le programme
+
+# Dépendances explicites
+individu.o: individu.c individu.h
+mainP1.o: mainP1.c individu.h
