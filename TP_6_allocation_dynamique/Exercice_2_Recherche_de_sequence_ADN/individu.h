@@ -1,10 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "malloc.h"
+
 #ifndef INDIVIDU_H
 #define INDIVIDU_H
 
+#define TAILLE_NOM 50
+#define TAILLE_SEQUENCE_ADN 10000
+
 typedef struct  {
-    char nom[50+1+50];      // Nom de l'individu (50 caractères max + 1 pour le '\0')
-    char sequence_ADN[1000+1];// Séquence ADN (1000 caractères max + 1 pour le '\0')
+    char* nom;      // Nom de l'individu 
+    char* sequence_ADN;// Séquence ADN 
 }t_indiv;
 
+/*  
+Lit les données ADN d'un individu à partir d'un fichier
+Paramètres :
+    nom_fichier : nom du fichier à lire
+    ind : pointeur vers la structure t_indiv où les données seront stockées
+
+Retourne 1 en cas de succès, EXIT_FAILURE en cas d'erreur
+*/
 int lecture_adn(const char *nom_fichier, t_indiv *ind);
+/*
+    * Libère la mémoire allouée pour un individu
+*/
+void detruire_indiv(t_indiv *ind);
 #endif
