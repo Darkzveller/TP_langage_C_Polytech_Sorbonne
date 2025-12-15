@@ -98,20 +98,36 @@ t_element *addition(t_element *sommet)
 
 t_element *action(t_element *sommet, char *saisie)
 {
-
-    // Vérifier si la saisie correspond à l'addition
     if (strcmp(saisie, "ADD") == 0 || strcmp(saisie, "+") == 0)
     {
-        sommet = addition(sommet);
+        return addition(sommet);
+    }
+    else if (strcmp(saisie, "SUB") == 0 || strcmp(saisie, "-") == 0)
+    {
+        return soustraction(sommet);
+    }
+    else if (strcmp(saisie, "MUL") == 0 || strcmp(saisie, "*") == 0)
+    {
+        return multiplication(sommet);
+    }
+    else if (strcmp(saisie, "DIV") == 0 || strcmp(saisie, "/") == 0)
+    {
+        return division(sommet);
+    }
+    else if (strcmp(saisie, "SIN") == 0)
+    {
+        return sinus(sommet);
+    }
+    else if (strcmp(saisie, "DUP") == 0)
+    {
+        return dupliquer(sommet); // Dupliquer le sommet
     }
     else
     {
-        printf("Action '%s' non reconnue.\n", saisie);
+        printf("Commande inconnue : %s\n", saisie);
     }
-
     return sommet;
 }
-
 // Dépiler deux éléments, effectuer l'opération, puis empiler le résultat
 t_element *soustraction(t_element *sommet)
 {

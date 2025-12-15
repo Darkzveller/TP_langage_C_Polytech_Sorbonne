@@ -45,30 +45,7 @@ int main()
         else
         {
             // Ce n'est pas un nombre -> c'est une opération
-            if (strcmp(buffer, "+") == 0 || strcmp(buffer, "ADD") == 0)
-            {
-                pile = addition(pile);
-            }
-            else if (strcmp(buffer, "-") == 0 || strcmp(buffer, "SUB") == 0)
-            {
-                pile = soustraction(pile);
-            }
-            else if (strcmp(buffer, "*") == 0 || strcmp(buffer, "MUL") == 0)
-            {
-                pile = multiplication(pile);
-            }
-            else if (strcmp(buffer, "/") == 0 || strcmp(buffer, "DIV") == 0)
-            {
-                pile = division(pile);
-            }
-            else if (strcmp(buffer, "SIN") == 0)
-            {
-                pile = sinus(pile);
-            }
-            else
-            {
-                printf("Commande inconnue : %s\n", buffer);
-            }
+            pile = action(pile, buffer);
         }
     }
 
