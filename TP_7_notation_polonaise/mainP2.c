@@ -2,27 +2,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include "malloc.h"
+#include <math.h>
 #include "pile.h"
 
-int main() {
+int main()
+{
     printf("Vous avez lancé %s\n", __FILE__);
     fflush(stdout);
 
-    t_element *pile = NULL;    // pile vide au départ
-    char buffer[1000];         // buffer pour la saisie
+    t_element *pile = NULL; // pile vide au départ
+    char buffer[1000];      // buffer pour la saisie
     int quitter = 0;
-        printf("Entrez un nombre (ou EXIT pour quitter) : ");
-        fflush(stdout);
 
-    while (!quitter) {
+    printf("Entrez un nombre ou une opération (+, -, *, /, SIN) (EXIT pour quitter) :\n");
 
-        if (scanf("%999s", buffer) != 1) {
+    while (!quitter)
+    {
+
+        if (scanf("%999s", buffer) != 1)
+        {
             printf("Erreur de lecture.\n");
             continue;
         }
 
         // Vérifier si l'utilisateur veut quitter
-        if (strcmp(buffer, "EXIT") == 0) {
+        if (strcmp(buffer, "EXIT") == 0)
+        {
             quitter = 1;
             break;
         }
@@ -31,26 +36,50 @@ int main() {
         char *fin_conversion;
         double valeur = strtod(buffer, &fin_conversion);
 
-        // Vérifier si la conversion a réussi
-        if (*fin_conversion != '\0') {
-            printf("'%s' n'est pas un nombre valide.\n", buffer);
-            continue;
+        if (*fin_conversion == '\0')
+        {
+            // C'est un nombre, on empile
+            pile = empiler(pile, valeur);
+            printf("Vous avez saisi : %f\n", valeur);
         }
-
-        // Empiler la valeur
-        pile = empiler(pile, valeur);
-
-        // Afficher seulement la valeur saisie
-        printf("Vous avez saisi : %f\n", valeur);
+        else
+        {
+            // Ce n'est pas un nombre -> c'est une opération
+            if (strcmp(buffer, "+") == 0 || strcmp(buffer, "ADD") == 0)
+            {
+                pile = addition(pile);
+            }
+            else if (strcmp(buffer, "-") == 0 || strcmp(buffer, "SUB") == 0)
+            {
+                pile = soustraction(pile);
+            }
+            else if (strcmp(buffer, "*") == 0 || strcmp(buffer, "MUL") == 0)
+            {
+                pile = multiplication(pile);
+            }
+            else if (strcmp(buffer, "/") == 0 || strcmp(buffer, "DIV") == 0)
+            {
+                pile = division(pile);
+            }
+            else if (strcmp(buffer, "SIN") == 0)
+            {
+                pile = sinus(pile);
+            }
+            else
+            {
+                printf("Commande inconnue : %s\n", buffer);
+            }
+        }
     }
 
     // Afficher la pile complète une seule fois avant de quitter
-    printf("Pile actuelle :\n");
+    printf("\nPile actuelle :\n");
     afficher(pile);
 
     // Vider la pile avant de quitter
     pile = vider(pile);
 
-    printf("Programme terminé.\n");
+    printf("\nProgramme terminé.\n");
     return 0;
 }
+// 12 35 + 86 0.9 + 35 / 56 87 25 + / + *
