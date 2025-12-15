@@ -122,6 +122,14 @@ t_element *action(t_element *sommet, char *saisie)
     {
         return dupliquer(sommet); // Dupliquer le sommet
     }
+    else if (strcmp(saisie, "SWAP") == 0)
+    {
+        return echanger(sommet); // Echnager deux valeurs
+    }
+    else if (strcmp(saisie, "POP") == 0)
+    {
+        return pop(sommet);
+    }
     else
     {
         printf("Commande inconnue : %s\n", saisie);
@@ -235,4 +243,34 @@ t_element *dupliquer(t_element *sommet)
 
     // Empiler une nouvelle valeur identique au sommet actuel
     return empiler(sommet, sommet->valeur);
+}
+
+t_element *echanger(t_element *sommet)
+{
+    // Vérifier qu'il y a au moins deux éléments
+    if (sommet == NULL || sommet->suivant == NULL)
+    {
+        return sommet; // rien à échanger
+    }
+
+    // Échanger les valeurs des deux premiers éléments
+    double temp = sommet->valeur;             // On sauvegarde la première valeur (a) dans temp
+    sommet->valeur = sommet->suivant->valeur; // On met la deuxième valeur (b) dans le premier élément
+    sommet->suivant->valeur = temp;           // On met la valeur sauvegardée (a) dans le deuxième élément
+    return sommet;                            // retourner le sommet inchangé
+}
+
+t_element *pop(t_element *sommet)
+{
+    if (sommet == NULL)
+    {
+        // La pile est vide, rien à faire
+        return NULL;
+    }
+
+    t_element *temp = sommet; // sauvegarder le sommet
+    sommet = sommet->suivant; // avancer le sommet
+    free(temp);               // libérer l'ancien sommet
+
+    return sommet; // retourner le nouveau sommet
 }

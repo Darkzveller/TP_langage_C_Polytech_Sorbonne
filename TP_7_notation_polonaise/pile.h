@@ -6,7 +6,7 @@
 #ifndef PILE_H
 #define PILE_H
 
-typedef struct
+typedef struct element
 {
     double valeur;           // valeur réelle stockée
     struct element *suivant; // pointeur vers l’élément suivant
@@ -25,5 +25,6 @@ t_element *multiplication(t_element *sommet);
 t_element *division(t_element *sommet);
 t_element *sinus(t_element *sommet);
 t_element *dupliquer(t_element *sommet);
-
+t_element *echanger(t_element * sommet);
+t_element *pop(t_element *sommet);
 #endif

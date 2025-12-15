@@ -4,7 +4,22 @@
 #include "malloc.h"
 #include <math.h>
 #include "pile.h"
+/*
+""""""""""""""""""""""""""""""""Méthode lancement du code"""""""""""""""""""""""""""""""""""""""""""
+Pour exécuter le code, il faut effectuer : 
+    - Nettoye le terminal dans un premier
+    - Supprime tous les .o et .out
+    - Compile et lance  le code mainP1.c spécifquement
 
+clear && make mproper && make MAIN=mainP1.c run
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+*/
+
+/*
+12 45 * 36 + 25 47 / + EXIT
+12 35 + 86 0.9 + 35 / 56 87 25 + / + * EXIT
+*/
 int main()
 {
     printf("Vous avez lancé %s\n", __FILE__);
@@ -59,4 +74,3 @@ int main()
     printf("\nProgramme terminé.\n");
     return 0;
 }
-// 12 35 + 86 0.9 + 35 / 56 87 25 + / + *

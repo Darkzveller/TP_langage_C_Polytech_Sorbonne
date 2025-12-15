@@ -3,6 +3,16 @@
 #include <string.h>
 #include "malloc.h"
 #include "pile.h"
+/*
+""""""""""""""""""""""""""""""""Méthode lancement du code"""""""""""""""""""""""""""""""""""""""""""
+Pour exécuter le code, il faut effectuer : 
+    - Nettoye le terminal dans un premier
+    - Supprime tous les .o et .out
+    - Compile et lance  le code mainP1.c spécifquement
+
+clear && make mproper && make MAIN=mainP1.c run
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+*/
 
 int main()
 {
