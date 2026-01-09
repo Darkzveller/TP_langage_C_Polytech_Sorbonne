@@ -1,0 +1,300 @@
+299
+Bolivar:48.880502:2.374922
+Richelieu - Drouot:48.871987:2.338741
+Filles du Calvaire:48.864072:2.366121
+George V:48.872013:2.300569
+Charles Michels:48.846591:2.286942
+Vavin:48.842232:2.328949
+Saint-Fargeau:48.872083:2.404520
+Jules Joffrin:48.892437:2.344782
+Fort d'Aubervilliers:48.914240:2.403785
+Simplon:48.893381:2.348202
+Iéna:48.864466:2.293380
+Saint-Michel:48.853650:2.343929
+Porte d'Ivry:48.820960:2.370440
+Couronnes:48.869521:2.379861
+Église de Pantin:48.893628:2.412918
+Saint-Denis - Porte de Paris:48.930211:2.357769
+Michel Bizot:48.837485:2.401234
+Saint-Augustin:48.874441:2.322133
+Odéon:48.852066:2.338951
+La Muette:48.857718:2.273719
+Rue des Boulets:48.851811:2.390151
+Michel-Ange - Molitor:48.844960:2.261194
+Porte de Vanves:48.827940:2.305884
+La Tour-Maubourg:48.857667:2.310399
+Chardon-Lagache:48.845138:2.266214
+Villiers:48.881130:2.314867
+Bérault:48.845371:2.428264
+Villejuif - Louis Aragon:48.787175:2.367564
+Vaneau:48.848947:2.321557
+Campo-Formio:48.835022:2.358128
+Saint-Denis - Université:48.946068:2.362618
+Les Agnettes:48.923039:2.285891
+Arts et Métiers:48.865285:2.356794
+Trinité - d'Estienne d'Orves:48.876302:2.333197
+Franklin D. Roosevelt:48.868977:2.309890
+Mairie des Lilas:48.879788:2.416289
+Jourdain:48.875200:2.389508
+Porte d'Italie:48.819196:2.360805
+Barbès - Rochechouart:48.883640:2.350516
+Exelmans:48.842405:2.259549
+République:48.867503:2.363811
+Europe:48.878821:2.322380
+Wagram:48.884057:2.303668
+Buzenval:48.851976:2.402045
+Gare de l'Est:48.876142:2.358279
+Cambronne:48.847537:2.302937
+Olympiades:48.827262:2.368281
+Crimée:48.891580:2.377070
+Mairie de Saint-Ouen:48.911619:2.333753
+Saint-Sulpice:48.850909:2.330652
+Montparnasse - Bienvenüe:48.843466:2.323072
+Courcelles:48.879401:2.304339
+Quai de la Rapée:48.846539:2.365826
+Rambuteau:48.861951:2.353905
+Philippe Auguste:48.858021:2.390938
+Porte de Bagnolet:48.864565:2.407278
+Invalides:48.860764:2.314658
+Jussieu:48.846052:2.355738
+Rennes:48.848193:2.327763
+Dupleix:48.850392:2.293611
+Danube:48.881808:2.394201
+Les Sablons:48.880966:2.272432
+Place d'Italie:48.831483:2.355692
+Porte de Clignancourt:48.897036:2.344945
+Reuilly-Diderot:48.847014:2.386447
+Porte d'Auteuil:48.848025:2.258750
+Charles de Gaulle - Étoile:48.873773:2.294981
+Les Gobelins:48.835896:2.352467
+Croix de Chavaux:48.858055:2.435764
+Cour Saint-Émilion:48.833501:2.385935
+Porte des Lilas:48.877183:2.406655
+Liberté:48.825882:2.407022
+Les Halles:48.862396:2.345973
+Rue de la Pompe:48.863912:2.279052
+Quai de la Gare:48.837069:2.372773
+Ségur:48.847434:2.306853
+Plaisance:48.831553:2.313741
+Picpus:48.845150:2.400494
+Bréguet - Sabin:48.856133:2.370094
+Châtelet:48.858352:2.347324
+Denfert-Rochereau:48.833901:2.332728
+Le Kremlin-Bicêtre:48.810388:2.361849
+Boulogne - Pont de Saint-Cloud:48.840684:2.228331
+Corentin Cariou:48.894340:2.381745
+Gare du Nord:48.880575:2.354931
+Sully - Morland:48.851425:2.361894
+Porte de Versailles:48.832328:2.287841
+Porte de Pantin:48.888471:2.391814
+Rome:48.882425:2.322052
+Saint-Lazare:48.875684:2.325610
+Château d'Eau:48.872901:2.356149
+Avenue Émile Zola:48.846977:2.294512
+Lamarck - Caulaincourt:48.889139:2.338159
+Edgar Quinet:48.841048:2.325084
+Alma - Marceau:48.864904:2.300234
+Porte de la Villette:48.897089:2.385876
+Cardinal Lemoine:48.847139:2.351203
+Michel-Ange - Auteuil:48.847771:2.263870
+Richard-Lenoir:48.859772:2.371843
+Mairie de Montreuil:48.862283:2.441847
+Télégraphe:48.875463:2.398434
+Bastille:48.853082:2.369077
+Commerce:48.845093:2.294215
+Bir-Hakeim:48.853917:2.289332
+Mairie d'Ivry:48.811124:2.383387
+Mouton-Duvernet:48.832139:2.330325
+Gabriel Péri:48.916575:2.294388
+Riquet:48.887880:2.373578
+Chaussée d'Antin - La Fayette:48.873072:2.333932
+Bercy:48.839930:2.380418
+La Courneuve - 8 Mai 1945:48.920777:2.410668
+Pierre et Marie Curie:48.815918:2.377894
+Bobigny - Pablo Picasso:48.906538:2.449994
+Notre-Dame-de-Lorette:48.876040:2.337341
+Saint-Georges:48.878449:2.337382
+Jasmin:48.851898:2.267856
+Porte d'Orléans:48.823190:2.325363
+Guy Môquet:48.892221:2.327174
+Saint-Jacques:48.832913:2.337081
+Château-Landon:48.878456:2.362071
+Créteil - Préfecture:48.779772:2.459317
+Père Lachaise:48.862921:2.387388
+Louise Michel:48.889273:2.288073
+Kléber:48.871138:2.293118
+Bel-Air:48.841344:2.400912
+Cadet:48.876135:2.344876
+Bibliothèque François Mitterrand:48.829823:2.376781
+Gare d'Austerlitz:48.842626:2.364971
+Abbesses:48.884849:2.338688
+Poissonnière:48.877075:2.348446
+Colonel Fabien:48.877136:2.371160
+Raspail:48.839194:2.330606
+Quatre-Septembre:48.869574:2.336633
+Ourcq:48.886856:2.385747
+Mairie de Clichy:48.903959:2.305343
+Pernety:48.834210:2.318512
+Marx Dormoy:48.891213:2.359909
+Maraîchers:48.852851:2.406990
+Pyrénées:48.873875:2.385259
+Ranelagh:48.855020:2.269634
+Gare de Lyon:48.844728:2.373929
+Aubervilliers - Pantin - Quatre Chemins:48.903897:2.392496
+Bobigny - Pantin - Raymond Queneau:48.895409:2.424929
+Jacques Bonsergent:48.871201:2.360607
+Maisons-Alfort - Les Juilliottes:48.802567:2.446432
+Champs-Élysées - Clémenceau:48.867531:2.313542
+Brochant:48.890855:2.319700
+Passy:48.857445:2.285779
+Carrefour Pleyel:48.919942:2.343926
+Belleville:48.872083:2.376947
+Marcel Sembat:48.833670:2.243579
+Porte Dauphine:48.871545:2.276768
+Pont de Neuilly:48.884968:2.259775
+Gambetta:48.864947:2.398451
+Charonne:48.855103:2.384639
+Pigalle:48.882255:2.337573
+Chevaleret:48.834938:2.368082
+Sèvres - Babylone:48.851510:2.326655
+Grande Arche de la Défense:48.891291:2.240117
+École Vétérinaire de Maisons-Alfort:48.815190:2.421882
+Glacière:48.831150:2.343384
+Créteil - L'Échat:48.795963:2.449356
+Monceau:48.880319:2.308603
+Le Peletier:48.874720:2.339549
+Villejuif - Léo Lagrange:48.803768:2.363927
+Rue Saint-Maur:48.864335:2.379448
+Porte de Montreuil:48.853792:2.412245
+Pereire:48.884648:2.299211
+Pyramides:48.865872:2.334670
+Censier - Daubenton:48.840597:2.351774
+Liège:48.879626:2.326983
+Château Rouge:48.886730:2.349552
+Château de Vincennes:48.844382:2.440136
+Sentier:48.867569:2.346387
+Marcadet - Poissonniers:48.890369:2.350028
+Trocadéro:48.863301:2.287061
+Faidherbe - Chaligny:48.850158:2.383398
+Montgallet:48.844276:2.389974
+Pont de Sèvres:48.829747:2.231035
+Pont Neuf:48.858676:2.341488
+Saint-Marcel:48.837988:2.360416
+Solférino:48.858249:2.323225
+Cluny - La Sorbonne:48.851019:2.344583
+Place de Clichy:48.883809:2.327625
+Pelleport:48.868671:2.401752
+Porte de Clichy:48.894345:2.313652
+Asnières - Gennevilliers - Les Courtilles:48.930606:2.283788
+Esplanade de la Défense:48.888361:2.249955
+École Militaire:48.855110:2.306737
+Mabillon:48.852775:2.335322
+Boissière:48.867386:2.290392
+Volontaires:48.841343:2.307504
+La Fourche:48.886900:2.325875
+Voltaire:48.857803:2.380106
+Boucicaut:48.840578:2.286621
+Réaumur - Sébastopol:48.866246:2.352389
+Temple:48.866488:2.360595
+Buttes Chaumont:48.878500:2.381772
+Grands Boulevards:48.871426:2.344342
+Tuileries:48.864531:2.329617
+Saint-Mandé:48.846241:2.419019
+Nationale:48.833183:2.362718
+Miromesnil:48.873667:2.314465
+Porte Dorée:48.835481:2.406100
+Mairie d'Issy:48.824152:2.273434
+Billancourt:48.832090:2.238177
+Félix Faure:48.842351:2.291004
+Boulogne - Jean Jaurès:48.842278:2.238877
+Louis Blanc:48.881137:2.364839
+Saint-François-Xavier:48.851951:2.314475
+Convention:48.837419:2.296795
+Pont Marie:48.853287:2.357616
+Basilique de Saint-Denis:48.938100:2.360846
+Nation:48.848389:2.395800
+Villejuif - Paul Vaillant-Couturier:48.795991:2.368248
+Porte Maillot:48.877946:2.281925
+Saint-Ambroise:48.861295:2.374211
+Porte de Champerret:48.885851:2.293487
+Maubert - Mutualité:48.850193:2.347936
+Balard:48.835970:2.278212
+Créteil - Université:48.789754:2.450785
+Concorde:48.866176:2.322397
+Louvre - Rivoli:48.861080:2.340283
+Avron:48.851940:2.397863
+Javel - André Citroën:48.846165:2.278716
+Falguière:48.844566:2.318287
+Saint-Philippe du Roule:48.871941:2.310036
+Saint-Placide:48.846845:2.326913
+Pont de Levallois - Bécon:48.897313:2.280787
+Saint-Germain-des-Prés:48.853774:2.333280
+Victor Hugo:48.869817:2.285199
+Oberkampf:48.864545:2.368877
+Anatole France:48.892022:2.285536
+Strasbourg - Saint-Denis:48.869591:2.354009
+Argentine:48.875339:2.290113
+Botzaris:48.879552:2.388040
+Rue du Bac:48.855690:2.325607
+La Motte-Picquet - Grenelle:48.849143:2.298090
+Charenton - Écoles:48.821490:2.413862
+Corentin Celton:48.826833:2.278985
+Maisons-Alfort - Stade:48.808681:2.436073
+Anvers:48.883007:2.344849
+Ternes:48.878178:2.298671
+Étienne Marcel:48.864111:2.350608
+Stalingrad:48.884263:2.365824
+Madeleine:48.870482:2.325000
+Palais Royal - Musée du Louvre:48.862644:2.336578
+Cité:48.855637:2.346418
+Tolbiac:48.826665:2.357678
+Alésia:48.828218:2.326803
+Daumesnil:48.839644:2.395792
+Vaugirard:48.839649:2.301491
+Bourse:48.868738:2.341370
+Pré Saint-Gervais:48.880250:2.398914
+Porte de Saint-Cloud:48.838082:2.256956
+Place Monge:48.843590:2.352279
+Pasteur:48.842836:2.312681
+Malakoff - Rue Étienne Dolet:48.814703:2.297301
+Gaîté:48.838654:2.322637
+Ledru-Rollin:48.851529:2.375160
+Église d'Auteuil:48.847169:2.269020
+Duroc:48.846829:2.316479
+Porte de Choisy:48.820315:2.365293
+Malakoff - Plateau de Vanves:48.822842:2.298345
+Malesherbes:48.882476:2.311002
+Blanche:48.883459:2.333703
+Saint-Paul:48.855214:2.360859
+Châtillon - Montrouge:48.810539:2.301826
+Porte de Vincennes:48.847326:2.407759
+Garibaldi:48.906397:2.331907
+Varenne:48.856238:2.314921
+Porte de Saint-Ouen:48.896774:2.328710
+Ménilmontant:48.866248:2.383618
+Alexandre Dumas:48.855907:2.394790
+Notre-Dame-des-Champs:48.844568:2.328788
+Opéra:48.870636:2.332352
+Gallieni:48.864936:2.416637
+Place des Fêtes:48.876840:2.392960
+Chemin Vert:48.856778:2.368348
+La Chapelle:48.884411:2.360288
+Dugommier:48.839049:2.389964
+Parmentier:48.865299:2.374381
+Porte de Charenton:48.832780:2.400400
+Bonne Nouvelle:48.870639:2.348875
+Saint-Sébastien - Froissart:48.860480:2.367358
+Lourmel:48.838604:2.281817
+Mirabeau:48.846739:2.271708
+Hoche:48.891494:2.403144
+Laumière:48.885006:2.378524
+Robespierre:48.855683:2.423678
+Havre - Caumartin:48.873465:2.327968
+Assemblée Nationale:48.860655:2.321130
+Goncourt:48.869831:2.370687
+Porte de la Chapelle:48.897274:2.359191
+Sèvres - Lecourbe:48.845634:2.309476
+Hôtel de Ville:48.857487:2.351525
+Corvisart:48.829807:2.350508
+Maison Blanche:48.822155:2.358531
+Jaurès:48.881790:2.370198
