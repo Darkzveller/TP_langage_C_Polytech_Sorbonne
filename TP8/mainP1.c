@@ -5,6 +5,9 @@
 int main()
 {
     printf("Vous avez lancer %s\n\n", __FILE__); // __FILE__ contient le nom du fichier source
+    printf("caca test\n");
+    
+    printf("\n--------------------------------------------------------------------------------------------------------------\n\n");
 
     t_noeud *arbre = creerNoeudOp(creerFeuilleReel(12), "+", creerNoeudOp(creerFeuilleReel(4), "*", creerFeuilleVar("x")));
 
@@ -35,6 +38,5 @@ int main()
 
     printf("Arbres detruits.\n");
 
-    printf("caca");
     return 0;
 }
