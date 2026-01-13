@@ -17,6 +17,7 @@ typedef struct {
 void readStation(FILE *f, t_station *station);
 /* Prototype */
 int readMetro(const char *filename, t_metro *metro);
+t_station *findStation(const t_metro *metro, const char *nom);
 
 
 

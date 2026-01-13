@@ -50,3 +50,12 @@ void readStation(FILE *f, t_station *station) {
     station->latitude = lat;
     station->longitude = lon;
 }
+
+t_station *findStation(const t_metro *metro, const char *nom) {
+    for (int i = 0; i < metro->nb_stations; i++) {
+        if (strcmp(metro->stations[i].nom, nom) == 0) {
+            return &metro->stations[i];
+        }
+    }
+    return NULL;
+}

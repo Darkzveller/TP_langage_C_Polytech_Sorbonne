@@ -28,6 +28,19 @@ int main(void)
     {
         printf("Station inexistante\n");
     }
+    /* Recherche de Jussieu */
+    t_station *s = findStation(&metro, "Jussieu");
+
+    if (s != NULL)
+    {
+        printf("Station Jussieu : (%.6f, %.6f)\n",
+               s->latitude, s->longitude);
+    }
+    else
+    {
+        printf("Station Jussieu non trouvée\n");
+    }
+
 
     /* Libération mémoire */
     for (int i = 0; i < metro.nb_stations; i++)
@@ -36,5 +49,6 @@ int main(void)
     }
     free(metro.stations);
 
+    
     return 0;
 }
