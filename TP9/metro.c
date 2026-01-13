@@ -23,10 +23,17 @@ int readMetro(const char *filename, t_metro *metro)
         fclose(f);
         return 0;
     }
+        /* Lecture de chaque station */
+    for (int i = 0; i < metro->nb_stations; i++)
+    {
+        readStation(f, &metro->stations[i]);
+    }
+
     /* Lecture des lignes */
     fscanf(f, "%d", &metro->nb_lignes);
     fgetc(f); /* saut de ligne */
-        metro->lignes = malloc(metro->nb_lignes * sizeof(t_line));
+    
+    metro->lignes = malloc(metro->nb_lignes * sizeof(t_line));
     if (metro->lignes == NULL)
     {
         fclose(f);
@@ -36,11 +43,6 @@ int readMetro(const char *filename, t_metro *metro)
     for (int i = 0; i < metro->nb_lignes; i++)
     {
         readLine(f, &metro->lignes[i]);
-    }
-    /* Lecture de chaque station */
-    for (int i = 0; i < metro->nb_stations; i++)
-    {
-        readStation(f, &metro->stations[i]);
     }
 
     fclose(f);
@@ -81,24 +83,31 @@ t_station *findStation(const t_metro *metro, const char *nom)
     return NULL;
 }
 
-
 void readLine(FILE *f, t_line *line)
 {
     char buffer[256];
     int attente;
 
     /* Lecture du nom jusqu'au ':' */
-    fscanf(f, "%[^:]", buffer);
+    if (fscanf(f, " %255[^:]:", buffer) != 1) {
+        line->nom = NULL;  // si erreur, mettre NULL
+        line->couleur[0] = '\0';
+        line->attente = 0;
+        return;
+    }
 
-    /* Allocation du nom */
+    /* Allocation dynamique pour le nom */
     line->nom = malloc(strlen(buffer) + 1);
     if (line->nom != NULL)
     {
         strcpy(line->nom, buffer);
     }
 
-    /* Lecture couleur, attente et fin de ligne */
-    fscanf(f, ":%9[^:]:%d\n", line->couleur, &attente);
-
-    line->attente = attente;
+    /* Lecture de la couleur et du temps d'attente */
+    if (fscanf(f, "%9[^:]:%d\n", line->couleur, &attente) != 2) {
+        line->couleur[0] = '\0';
+        line->attente = 0;
+    } else {
+        line->attente = attente;
+    }
 }

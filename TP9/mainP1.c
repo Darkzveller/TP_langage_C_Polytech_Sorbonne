@@ -59,6 +59,11 @@ else
     }
     free(metro.stations);
 
-    
+    for (int i = 0; i < metro.nb_lignes; i++)
+{
+    free(metro.lignes[i].nom);
+}
+free(metro.lignes);
+
     return 0;
 }
