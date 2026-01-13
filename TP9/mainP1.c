@@ -41,6 +41,16 @@ int main(void)
         printf("Station Jussieu non trouvée\n");
     }
 
+if (metro.nb_lignes >= 10)
+{
+    printf("Ligne 10 : %s (%s)\n",
+           metro.lignes[9].nom,
+           metro.lignes[9].couleur);
+}
+else
+{
+    printf("Il n'y a pas 10 lignes\n");
+}
 
     /* Libération mémoire */
     for (int i = 0; i < metro.nb_stations; i++)
